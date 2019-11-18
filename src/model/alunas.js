@@ -1,13 +1,20 @@
-const mongoose = require ("mongoose");
+const mongoose = require('mongoose');
 
-const AlunasSchema = new mongoose.Schema ({
+const AlunasSchema = new mongoose.Schema({
     nome: {type: String},
-    nasceuEmSp: {type: Boolean},
-    id: {type: Number},
-    livros: [{
+    dateOfBirth: {type: String},//date
+    nasceuEmSp: {type: String},//bollean
+    livros:[{
+        _id:false,
         titulo: String,
-        leu: Boolean,
-    }]
-    
-
+        leu: String
+}]},{
+versionKey: false
 })
+//ex: para consumir devemos chamar como alunas
+const Alunas = mongoose.model('Alunas', AlunasSchema)
+
+module.exports = Alunas
+
+//exemplo de schema com campos obrigatórios
+//var sampleSchema = new Schema({ name: { type: String, required: true } });
